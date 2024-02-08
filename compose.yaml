@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: pe-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:${APP_PROJECT_PATH}
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - database
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: pe-php83
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:${APP_PROJECT_PATH}
+    depends_on:
+      - database
+  ###> doctrine/doctrine-bundle ###
+  database:
+    container_name: pe-postgres
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app-pwd}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###
+
+volumes:
+  ###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###
