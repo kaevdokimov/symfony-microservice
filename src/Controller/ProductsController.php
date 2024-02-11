@@ -2,9 +2,11 @@
 namespace App\Controller;
 
 use App\DTO\LowestPriceEnquiry;
-use App\Filter\LowestPriceFilter;
+use App\Entity\Promotion;
 use App\Filter\PromotionsFilterInterface;
+use App\Repository\ProductRepository;
 use App\Service\Serializer\DTOSerializer;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,16 +15,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductsController extends AbstractController
 {
-
-    /*
+    public function __construct(
+        private ProductRepository $repository,
+        private EntityManagerInterface $entityManager
+    )
     {
-        "quantity": 5,
-        "request_location": "UK",
-        "voucher_code": "OU812",
-        "request_date": "2022-04-04",
-        "product_id": 1
+
     }
-    */
     #[Route('/products/{id}/lowest-price', name: 'lowest-price', methods: 'POST')]
     public function lowestPrice(
         Request $request,
@@ -42,10 +41,18 @@ class ProductsController extends AbstractController
             $request->getContent(), LowestPriceEnquiry::class, 'json'
         );
 
-        $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry);
+        $product = $this->repository->find($id);
+        $lowestPriceEnquiry->setProduct($product);
+
+        $promotions = $this->entityManager->getRepository(Promotion::class)->findValidForProduct(
+            $product,
+            date_create_immutable($lowestPriceEnquiry->getRequestDate())
+        );
+
+        $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry, ...$promotions);
 
         $responseContent = $serializer->serialize($modifiedEnquiry, 'json');
 
-        return new Response($responseContent, 200);
+        return new Response($responseContent, 200, ['Content-Type' => 'application/json']);
     }
 }

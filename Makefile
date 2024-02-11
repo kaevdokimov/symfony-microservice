@@ -23,18 +23,11 @@ docker-build:
 wait-db:
 	docker-compose exec php wait-for-it mariadb:3306 -t 60
 
+migration:
+	docker-compose exec php symfony console make:migration
+
 migrate:
-	docker-compose exec php php artisan migrate
-	docker-compose exec php php artisan doctrine:migrations:migrate --no-interaction
-
-rollback:
-	docker-compose exec php php artisan doctrine:migrations:migrate prev --no-interaction
-
-diff:
-	docker-compose exec php php artisan doctrine:migrations:diff
-
-validate-schema:
-	docker-compose exec php php artisan doctrine:schema:validate
+	docker-compose exec php symfony console doctrine:migrations:migrate
 
 composer-install:
 	docker-compose exec php composer install
