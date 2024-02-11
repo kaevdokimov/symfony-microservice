@@ -3,7 +3,6 @@
 namespace App\Tests\unit;
 
 use App\DTO\LowestPriceEnquiry;
-use App\DTO\PromotionEnquiryInterface;
 use App\Entity\Product;
 use App\Entity\Promotion;
 use App\Filter\LowestPriceFilter;
