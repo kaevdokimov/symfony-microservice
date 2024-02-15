@@ -41,7 +41,7 @@ composer-update:
 	docker-compose exec php composer dump-autoload
 
 fixtures:
-	docker-compose exec php bin/console doctrine:fixtures:load --no-interaction
+	docker-compose exec php bin/console doctrine:fixtures:load --purge-with-truncate --no-interaction
 
 fixtures-tests:
-	docker-compose exec php bin/console doctrine:fixtures:load --no-interaction --env=test
+	docker-compose exec php bin/console doctrine:fixtures:load --purge-with-truncate --no-interaction --env=test
