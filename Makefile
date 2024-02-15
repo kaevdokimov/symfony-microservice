@@ -39,3 +39,9 @@ composer-install:
 composer-update:
 	docker-compose exec php composer update --apcu-autoloader -o
 	docker-compose exec php composer dump-autoload
+
+fixtures:
+	docker-compose exec php bin/console doctrine:fixtures:load --no-interaction
+
+fixtures-tests:
+	docker-compose exec php bin/console doctrine:fixtures:load --no-interaction --env=test
