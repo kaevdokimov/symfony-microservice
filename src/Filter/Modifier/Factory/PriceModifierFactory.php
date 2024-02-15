@@ -7,6 +7,9 @@ use Symfony\Component\VarExporter\Exception\ClassNotFoundException;
 
 class PriceModifierFactory implements PriceModifierFactoryInterface
 {
+    /**
+     * @throws ClassNotFoundException
+     */
     public function create(string $modifierType): PriceModifierInterface
     {
         // Convert type (snake_case) to ClassName (PascalCase)

@@ -25,6 +25,12 @@ class ProductPromotion
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $validTo = null;
 
+    public function __construct(Product $product, Promotion $promotion)
+    {
+        $this->product = $product;
+        $this->promotion = $promotion;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
