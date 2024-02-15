@@ -1,6 +1,6 @@
 #!make
 
-init: docker-clear docker-build docker-up composer-install
+init: docker-clear docker-build docker-up composer-install migrate fixtures
 up: docker-up
 down: docker-down
 restart: docker-down docker-up
@@ -30,7 +30,7 @@ migration:
 	docker-compose exec php symfony console make:migration
 
 migrate:
-	docker-compose exec php symfony console doctrine:migrations:migrate
+	docker-compose exec php symfony console doctrine:migrations:migrate --all-or-nothing --query-time --no-interaction
 
 composer-install:
 	docker-compose exec php composer install
