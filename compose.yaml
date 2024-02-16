@@ -12,6 +12,7 @@ services:
     depends_on:
       - php
       - database
+
   php:
     build:
       context: .
@@ -23,6 +24,15 @@ services:
       - ./:${APP_PROJECT_PATH}
     depends_on:
       - database
+
+  redis:
+    image: redis:7.2.4-alpine
+    container_name: pe-redis
+    ports:
+      - 6379
+    volumes:
+      - redis-data:/var/lib/redis
+
   ###> doctrine/doctrine-bundle ###
   database:
     container_name: pe-postgres
@@ -44,3 +54,4 @@ volumes:
   ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
+  redis-data:
