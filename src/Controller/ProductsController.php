@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Controller;
 
 use App\Cache\PromotionCache;
@@ -16,21 +17,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductsController extends AbstractController
 {
     public function __construct(
-        private ProductRepository $repository,
+        private ProductRepository      $repository,
         private EntityManagerInterface $entityManager
     )
     {
 
     }
+
     #[Route('/products/{id}/lowest-price', name: 'lowest-price', methods: 'POST')]
     public function lowestPrice(
-        Request $request,
-        int $id,
-        DTOSerializer $serializer,
+        Request                   $request,
+        int                       $id,
+        DTOSerializer             $serializer,
         PromotionsFilterInterface $promotionsFilter,
-        PromotionCache $promotionCache
-    ):Response {
-        if($request->headers->has('force_fail')) {
+        PromotionCache            $promotionCache
+    ): Response
+    {
+        if ($request->headers->has('force_fail')) {
             return new JsonResponse(
                 ['error' => 'Promotions Engine failure message'],
                 $request->headers->get('force_fail')

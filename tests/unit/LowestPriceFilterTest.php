@@ -36,7 +36,7 @@ class LowestPriceFilterTest extends ServiceTestCase
         $this->assertSame('Black Friday half price sale', $filteredEnquiry->getPromotionName());
     }
 
-    public function promotionsDataProvider():array
+    public function promotionsDataProvider(): array
     {
         $promotionsOne = new Promotion();
         $promotionsOne->setName('Black Friday half price sale');

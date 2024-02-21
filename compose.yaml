@@ -53,5 +53,5 @@ services:
 volumes:
   ###> doctrine/doctrine-bundle ###
   database_data:
-###< doctrine/doctrine-bundle ###
+  ###< doctrine/doctrine-bundle ###
   redis-data:

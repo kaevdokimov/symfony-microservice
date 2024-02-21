@@ -30,7 +30,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of quantity
-     */ 
+     */
     public function getQuantity(): ?int
     {
         return $this->quantity;
@@ -40,7 +40,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of quantity
      *
      * @return  self
-     */ 
+     */
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
@@ -50,7 +50,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of requestLocation
-     */ 
+     */
     public function getRequestLocation()
     {
         return $this->requestLocation;
@@ -60,7 +60,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of requestLocation
      *
      * @return  self
-     */ 
+     */
     public function setRequestLocation($requestLocation)
     {
         $this->requestLocation = $requestLocation;
@@ -70,7 +70,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of voucherCode
-     */ 
+     */
     public function getVoucherCode()
     {
         return $this->voucherCode;
@@ -80,7 +80,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of voucherCode
      *
      * @return  self
-     */ 
+     */
     public function setVoucherCode($voucherCode)
     {
         $this->voucherCode = $voucherCode;
@@ -90,7 +90,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of requestDate
-     */ 
+     */
     public function getRequestDate()
     {
         return $this->requestDate;
@@ -100,7 +100,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of requestDate
      *
      * @return  self
-     */ 
+     */
     public function setRequestDate($requestDate)
     {
         $this->requestDate = $requestDate;
@@ -110,7 +110,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of price
-     */ 
+     */
     public function getPrice()
     {
         return $this->price;
@@ -120,7 +120,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of price
      *
      * @return  self
-     */ 
+     */
     public function setPrice($price)
     {
         $this->price = $price;
@@ -130,8 +130,8 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of discountedPrice
-     */ 
-    public function getDiscountedPrice():int
+     */
+    public function getDiscountedPrice(): int
     {
         return $this->discountedPrice;
     }
@@ -140,7 +140,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of discountedPrice
      *
      * @return  self
-     */ 
+     */
     public function setDiscountedPrice($discountedPrice)
     {
         $this->discountedPrice = $discountedPrice;
@@ -150,7 +150,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of promotionId
-     */ 
+     */
     public function getPromotionId()
     {
         return $this->promotionId;
@@ -160,7 +160,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of promotionId
      *
      * @return  self
-     */ 
+     */
     public function setPromotionId($promotionId)
     {
         $this->promotionId = $promotionId;
@@ -170,7 +170,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
 
     /**
      * Get the value of promotionName
-     */ 
+     */
     public function getPromotionName()
     {
         return $this->promotionName;
@@ -180,7 +180,7 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
      * Set the value of promotionName
      *
      * @return  self
-     */ 
+     */
     public function setPromotionName($promotionName)
     {
         $this->promotionName = $promotionName;
