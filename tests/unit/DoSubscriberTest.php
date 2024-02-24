@@ -31,7 +31,7 @@ class DoSubscriberTest extends ServiceTestCase
 
         // Except
         $this->expectException(ServiceException::class);
-        $this->expectExceptionMessage('Validation failed');
+        $this->expectExceptionMessage('ConstrainViolationList');
 
         // When
         $eventDispatcher->dispatch($event, $event::NAME);
