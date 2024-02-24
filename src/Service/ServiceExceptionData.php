@@ -23,12 +23,6 @@ class ServiceExceptionData
     {
         return [
             'type' => $this->type,
-            'violations' => [
-                [
-                    'propertyPath' => 'quantity',
-                    'message' => 'This value should be positive.'
-                ]
-            ]
         ];
     }
 }
