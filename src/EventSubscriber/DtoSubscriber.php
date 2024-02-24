@@ -3,12 +3,12 @@
 namespace App\EventSubscriber;
 
 use App\Event\AfterDtoCreatedEvent;
+use App\Service\ServiceException;
 use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Validator\Exception\ValidationFailedException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class DtoSubscriber implements EventSubscriberInterface
+readonly class DtoSubscriber implements EventSubscriberInterface
 {
 
     public function __construct(private ValidatorInterface $validator)
@@ -33,7 +33,7 @@ class DtoSubscriber implements EventSubscriberInterface
         $errors = $this->validator->validate($dto);
 
         if(count($errors) > 0) {
-            throw new ValidationFailedException('Validation failed', $errors);
+            throw new ServiceException(422, 'Validation failed');
         }
     }
 
