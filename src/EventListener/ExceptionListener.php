@@ -20,7 +20,7 @@ class ExceptionListener
             'violations' => [
                 [
                     'propertyPath' => 'quantity',
-                    'message' => 'This value should be positive'
+                    'message' => 'This value should be positive.'
                 ]
             ]
         ]);
