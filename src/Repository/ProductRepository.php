@@ -23,10 +23,10 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findOrFail(int $id):Product
+    public function findOrFail(int $id): Product
     {
         $product = $this->find($id);
-        if(!$product) {
+        if (!$product) {
             $exceptionData = new ServiceExceptionData(404, 'Product Not Found');
             throw new ServiceException($exceptionData);
         }

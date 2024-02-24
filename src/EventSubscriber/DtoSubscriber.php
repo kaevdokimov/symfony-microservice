@@ -4,7 +4,6 @@ namespace App\EventSubscriber;
 
 use App\Event\AfterDtoCreatedEvent;
 use App\Service\ServiceException;
-use App\Service\ServiceExceptionData;
 use App\Service\ValidationExceptionData;
 use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -34,7 +33,7 @@ readonly class DtoSubscriber implements EventSubscriberInterface
 
         $errors = $this->validator->validate($dto);
 
-        if(count($errors) > 0) {
+        if (count($errors) > 0) {
             $validationExceptionData = new ValidationExceptionData(422, 'ConstrainViolationList', $errors);
             throw new ServiceException($validationExceptionData);
         }
