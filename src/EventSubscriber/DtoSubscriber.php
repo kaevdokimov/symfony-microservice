@@ -5,7 +5,6 @@ namespace App\EventSubscriber;
 use App\Event\AfterDtoCreatedEvent;
 use App\Service\ServiceException;
 use App\Service\ValidationExceptionData;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 

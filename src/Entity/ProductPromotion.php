@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductPromotionRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,7 +24,7 @@ class ProductPromotion
     private ?Promotion $promotion = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $validTo = null;
+    private ?DateTimeInterface $validTo = null;
 
     public function __construct(Product $product, Promotion $promotion)
     {
@@ -60,12 +61,12 @@ class ProductPromotion
         return $this;
     }
 
-    public function getValidTo(): ?\DateTimeInterface
+    public function getValidTo(): ?DateTimeInterface
     {
         return $this->validTo;
     }
 
-    public function setValidTo(?\DateTimeInterface $validTo): static
+    public function setValidTo(?DateTimeInterface $validTo): static
     {
         $this->validTo = $validTo;
 
