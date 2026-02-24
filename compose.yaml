@@ -24,7 +24,7 @@ services:
       - database
 
   redis:
-    image: redis:8.6.0-alpine
+    image: redis:8.6.1-alpine
     container_name: pe-redis
     restart: always
     ports:
